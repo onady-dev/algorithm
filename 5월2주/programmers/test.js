@@ -1,5 +1,7 @@
+const { solution } = require('.')
+const should = require('should')
+
 /* 
-2022 05 10
 프로그래머스 - 완전탐색 - 모의고사
 문제 설명
 수포자는 수학을 포기한 사람의 준말입니다. 수포자 삼인방은 모의고사에 수학 문제를 전부 찍으려 합니다. 수포자는 1번 문제부터 마지막 문제까지 다음과 같이 찍습니다.
@@ -31,46 +33,22 @@ answers	    return
 모든 사람이 2문제씩을 맞췄습니다.
  */
 
-function solution(answers) {
-  let answer = [];
-  let list = [
-    { name: 1, value: 0 },
-    { name: 2, value: 0 },
-    { name: 3, value: 0 }
-  ]
-  const supoja1 = [1, 2, 3, 4, 5];
-  const supoja2 = [2, 1, 2, 3, 2, 4, 2, 5];
-  const supoja3 = [3, 3, 1, 1, 2, 2, 4, 4, 5, 5];
+describe('solution', function () {
 
-  for (const [index, value] of answers.entries()) {
-    if (value === supoja1[index % supoja1.length]) {
-      list[0].value++
-    }
-    if (value === supoja2[index % supoja2.length]) {
-      list[1].value++
-    }
-    if (value === supoja3[index % supoja3.length]) {
-      list[2].value++
-    }
-  }
+    const answers1 = [1, 2, 3, 4, 5];
+    const answers2 = [1, 3, 2, 4, 2];
+    const answers3 = [2, 1, 2, 3, 2, 4, 2, 5];
 
-  let sort = list.sort((a, b) => {
-    return b.value - a.value;
-  })
-
-  for (const [index, value] of sort.entries()) {
-    if (index === 0) {
-      answer.push(value.name)
-    } else if (value.value === sort[index - 1].value) {
-      answer.push(value.name)
-    } else {
-      break
-    }
-  }
-
-  return answer;
-}
-
-module.exports = {
-  solution: solution
-}
+    it('answers1', () => {
+        const result = solution(answers1);
+        result.should.eql([1])
+    });
+    it('answers2', () => {
+        const result = solution(answers2);
+        result.should.eql([1, 2, 3])
+    });
+    it('answers3', () => {
+        const result = solution(answers3);
+        result.should.eql([2])
+    });
+});
