@@ -1,12 +1,27 @@
+const readline = require("readline");
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
+let input = [];
+rl.on('line', function (line) {
+  input.push(Number(line))
+}).on('close', function () {
+  // solution(input);
+  console.log(solution(input));
+  process.exit();
+});
+
+
+
 function solution(input) {
-  let answer = 0
-
-
-  return answer
+  const N = input.shift();
+  const s = input.sort((a, b) => { return a - b })[0];
+  return N * s
 }
 
-var input = prompt('Message')
-console.log(input)
+
+
 
 module.exports = {
   solution: solution

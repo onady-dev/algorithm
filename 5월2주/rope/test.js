@@ -30,10 +30,20 @@ k개의 로프를 사용하여 중량이 w인 물체를 들어올릴 때, 각각
 describe('solution', function () {
 
     const input1 = [2, 10, 15];
+    const input2 = [5, 100, 25, 5, 90, 6];
+    const input3 = [3, 30, 15, 2];
 
     it('input1', () => {
         const result = solution(input1);
         result.should.eql(20)
+    });
+    it('input1', () => {
+        const result = solution(input2);
+        result.should.eql(25)
+    });
+    it('input1', () => {
+        const result = solution(input3);
+        result.should.eql(6)
     });
 
 });
