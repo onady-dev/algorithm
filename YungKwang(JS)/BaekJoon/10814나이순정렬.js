@@ -1,7 +1,10 @@
 const fs = require("fs");
 const input = (process.platform === "linux" ?
     fs.readFileSync("/dev/stdin").toString() :
-    ``).trim().split("\n");
+    `3
+21 Junkyu
+21 Dohyun
+20 Sunyoung`).trim().split("\n");
 
 const N = Number(input.shift());
 
