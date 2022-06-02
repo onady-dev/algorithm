@@ -4,25 +4,16 @@ const input = (process.platform === "linux" ?
     `5
 ABCDE
 BCDEF
-C12DA
-B12AA
+ABCDA
+BAAAA
 ACAAA`).trim().split("\n");
 
 const N = input.shift()
-const arrays = input.sort()
-
-console.log(arrays, 1)
-
-arrays.sort((a, b) => {
-    return a.length - b.length
+const arrays = input.sort((a, b) => {
+    if (a.length != b.length) return a.length - b.length;
+    if (num(a) === num(b)) return a.localeCompare(b)
+    return num(a) - num(b)
 })
-
-console.log(arrays, 2)
-
-// arrays.sort((a, b) => {
-//     if (num(a) !== -1 && num(b) !== -1) return num(a) - num(b)
-// })
-arrays.sort((a, b) => num(a) - num(b))
 
 function num(str) {
     const regex = /[^0-9]/g;
@@ -31,17 +22,4 @@ function num(str) {
     return arr.reduce((a, b) => a + b)
 }
 
-console.log(arrays, 3)
-
-// const dap = ['FIPJOTEA5',
-//     'PYF1J14TF',
-//     '34H2BJS6N',
-//     'PIM12MD7RCOLWW09']
-const dap = [
-    'A',
-    'ABCD',
-    'Z321',
-    '145C',
-    'A910'
-]
-console.log(dap)
+console.log(arrays.join("\n"))
