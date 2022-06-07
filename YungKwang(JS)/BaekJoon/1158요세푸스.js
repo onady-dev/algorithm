@@ -10,6 +10,7 @@ const arr = Array.from({ length: N }, (v, i) => i + 1)
 
 let queue = []
 let i = 0
+
 // while (arr.length > 0) {
 //     const a = arr.shift()
 //     if ((i + 1) % K === 0) {
