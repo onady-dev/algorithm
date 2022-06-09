@@ -1,31 +1,26 @@
 const fs = require("fs");
 // const input = fs.readFileSync("/dev/stdin").toString().trim().split('\n')
 const input = `
-4
+3
 `.trim().split('\n')
 
-const N = input.shift()
+const N = Number(input.shift())
 
-const arr = Array.from({ length: N }, (v, i) => i + 1)
-
-function* permutations(elements) {
-    if (elements.length === 1) {
-        yield elements;
+const answer = [];
+function solution(arr) {
+    if (arr.length === N) {
+        answer.push(arr.join(' '))
+        return;
     } else {
-        const [first, ...rest] = elements;
-
-        for (const a of permutations(rest)) {
-            for (let i = 0; i < elements.length; i++) {
-                const start = a.slice(0, i);
-                const ended = a.slice(i);
-
-                yield [...start, first, ...ended];
+        for (let i = 1; i <= N; i++) {
+            if (!arr.includes(i)) {
+                arr.push(i);
+                solution(arr);
+                arr.pop();
             }
         }
     }
 }
-const result = [...permutations(arr)].map((el) => el.join(" ")).sort();
 
-for (const a of result) {
-    console.log(a);
-}
+solution([])
+console.log(answer.join('\n'))
