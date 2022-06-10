@@ -1,3 +1,30 @@
+/* 
+  20220610
+*/
+function solution(input) {
+  const answer = []
+  const Adap = [1, 2, 3, 4, 5]
+  const Bdap = [2, 1, 2, 3, 2, 4, 2, 5]
+  const Cdap = [3, 3, 1, 1, 2, 2, 4, 4, 5, 5]
+  let Acount = 0
+  let Bcount = 0
+  let Ccount = 0
+
+  input.map((v, i) => {
+    if (v === Adap[i % Adap.length]) Acount++
+    if (v === Bdap[i % Bdap.length]) Bcount++
+    if (v === Cdap[i % Cdap.length]) Ccount++
+  })
+
+  const max = Math.max(Acount, Bcount, Ccount)
+  if (max === Acount) answer.push(1)
+  if (max === Bcount) answer.push(2)
+  if (max === Ccount) answer.push(3)
+
+  return answer
+}
+
+/*
 function solution(input) {
   const supoja1 = [1, 2, 3, 4, 5] //5
   const supoja2 = [2, 1, 2, 3, 2, 4, 2, 5] //8
@@ -16,6 +43,7 @@ function solution(input) {
 
   return answer
 }
+ */
 
 // function solution(input) {
 //   let answer = [];

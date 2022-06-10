@@ -6,6 +6,13 @@ const input = `
 2 4
 `.trim().split('\n')
 
+/*
+  20220610
+*/
+
+
+
+/*
 const N = input.shift()
 const M = input.shift()
 const X = input.shift().split(" ").map(Number)
@@ -18,6 +25,7 @@ X.map((v, i, arr) => {
 })
 space.sort((a, b) => b - a)
 console.log(space[0])
+ */
 
 // const length = Number(input.shift());
 // const count = Number(input.shift());
