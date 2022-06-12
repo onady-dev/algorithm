@@ -3,7 +3,7 @@ function solution(priorities, location) {
     let queue = []  // 입력받은 배열을 키, 값을 갖는 배열로 바꿈
     let answer = 0
 
-    priorities.map((v, i) => {
+    priorities.map((v,i) => {
         queue.push({ key: i, value: v })
     })
 

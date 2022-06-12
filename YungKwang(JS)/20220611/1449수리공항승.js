@@ -11,7 +11,7 @@ const hole = input.shift().split(" ").map(Number).sort((a, b) => a - b)
 let tape = 0
 let index = 0
 
-taping(index, hole[index] + L - 1)
+taping(index, hole[index] + L - 1)  // hole[index] + L - 1 === 테이프 길이로 막을 수 있는 범위
 function taping(index, length) {
     if (index === N) return
     if (hole[index + 1] <= length) {
@@ -21,6 +21,7 @@ function taping(index, length) {
         taping(index + 1, hole[index + 1] + L - 1)
     }
 }
+console.log(tape)
 
 // let start = 0
 // while (index < N) {
@@ -30,5 +31,3 @@ function taping(index, length) {
 //     }
 //     index++
 // }
-
-console.log(tape)
