@@ -1,3 +1,5 @@
+// 그리디 유형 
+
 const fs = require("fs");
 // const input = fs.readFileSync("/dev/stdin").toString().trim().split('\n')
 const input = `
@@ -14,3 +16,4 @@ let answer = P.sort((a, b) => a - b)
     .reduce((a, b) => a + b)
 
 console.log(answer)
+
