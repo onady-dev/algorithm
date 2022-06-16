@@ -1,16 +1,27 @@
 const fs = require("fs");
 // const input = fs.readFileSync("/dev/stdin").toString().trim().split('\n')
 const input = `
-5
-2
-2 4
+3
+1
+0
 `.trim().split('\n')
 
 /*
-  20220610
+  20220616
 */
 
+const N = Number(input.shift())
+const M = Number(input.shift())
+const X = input.shift().split(" ").map(Number)
 
+let space = []
+X.map((v, i) => {
+  if (i === 0) space.push(v)
+  if (i === M - 1) space.push(N - v)
+  if (i > 0) space.push(Math.ceil((X[i] - X[i - 1]) / 2))
+})
+
+console.log(Math.max(...space))
 
 /*
 const N = input.shift()
