@@ -1,35 +1,23 @@
 const fs = require("fs");
 // const input = fs.readFileSync("/dev/stdin").toString().trim().split('\n')
 const input = `
-100 90
+5
+0
+2 3 2
+0
+0
+0
 `.trim().split('\n')
 
-const [X, Y] = input.shift().split(" ").map(Number)
-const Z = Math.floor((Y * 100 / X))
+const N = +input.shift()
+const A = input.map(v => v == 0 ? Number(v) : v.split(" ").map(Number))
 
-// let count = 0
-// while (true) {
-//     if (Z === 100 || Z === 99) {
-//         count = -1
-//         break
-//     }
-//     count++
-//     if (Math.floor((Y + count) * 100 / (X + count)) !== Z) break
-// }
-
-// console.log(count)
-
-function binarysearch(first, last) {
-    const mid = Math.floor((first + last) / 2)
-    if (first >= last) return mid
-    const temp = Math.floor(((Y + mid) * 100 / (X + mid)))
-    if (temp > Z) return binarysearch(first, mid)
-    if (temp <= Z) return binarysearch(mid + 1, last)
-}
-
-let result = 0
-result = binarysearch(0, 100000000001)
-if (result === 100000000001) {
-    result = -1
-}
-console.log(result)
+let gift = []
+A.forEach((v) => {
+    if (v === 0) {
+        gift.length > 0 ? console.log(gift.shift()) : console.log(-1)
+    } else {
+        gift.push(...v.splice(1))
+        gift.sort((a, b) => b - a)
+    }
+});
