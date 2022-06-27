@@ -11,6 +11,7 @@ const input = `
 `.trim().split('\n')
 
 const N = +input.shift()
+<<<<<<< HEAD
 const arr = input.map(Number)
 
 const dp = new Array(N).fill(0);
@@ -43,3 +44,23 @@ console.log(dp);
 // }
 
 // console.log(answer)
+=======
+const stairs = input.map(Number)
+
+let answer = 0
+DFS(0, 0, 1)
+DFS(1, 0, 1)
+function DFS(stair, score, check) {
+    check++
+    score += stairs[stair]
+    if (N - 2 === stair && check < 3) DFS(stair + 1, score, check)
+    if (N - 2 > stair) {
+        if (check < 3) DFS(stair + 1, score, check)
+        DFS(stair + 2, score, 1)
+    }
+    if (answer < score && N - 1 === stair) answer = score
+
+}
+
+console.log(answer)
+>>>>>>> a8fb88d62ff879a5fb00ab0dcc43f7ff9276bf83
