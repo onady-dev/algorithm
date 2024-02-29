@@ -13,4 +13,10 @@ function reverseString(text) {
     // if(text === '') return '';
     // return reverseString(text.substring(1)) + text.charAt(0)
 }
-console.log(reverseString('안녕하세요'));
+
+function testReverseString() {
+    if(reverseString('str') !== 'rts') return 'fail'
+    return 'success'
+}
+
+console.log(testReverseString());

@@ -62,8 +62,50 @@ class LinkedList {
 
 }
 
-const list = new LinkedList();
-list.add(1)
-list.add(2)
-list.add(3)
-list.remove(1)
+function testListLinkedMethod() {
+    if (!addTest()) return "Add Fail";
+    if (!findTest()) return "Find Fail";
+    if (!removeTest()) return "Remove Fail";
+    return "success";
+}
+
+function addTest() {
+    let list = new LinkedList();
+    list.add(1);
+    if (list.size !== 1 || list.head.data !== 1 || list.tail.data !== 1) return false;
+    return true;
+}
+function findTest() {
+    let list = new LinkedList();
+    list.add(1);
+    if (!list.find(1)) return false;
+    return true;
+}
+function removeTest() {
+    let list = new LinkedList();
+    if (list.remove(1)) return false;
+    list.add(1);
+    list.remove(1);
+    if (list.size !== 0 || list.find(1)) return false;
+    list = new LinkedList();
+    list.add(1);
+    list.add(2);
+    list.add(3);
+    list.remove(1);
+    if(list.head.data === 1) return false;
+    list = new LinkedList();
+    list.add(1);
+    list.add(2);
+    list.add(3);
+    list.remove(3);
+    if(list.tail.data === 3) return false;
+    list = new LinkedList();
+    list.add(1);
+    list.add(2);
+    list.add(3);
+    list.remove(2);
+    if(list.head.next.data === 2) return false;
+    return true;
+}
+
+console.log(testListLinkedMethod());
