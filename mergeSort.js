@@ -77,8 +77,13 @@ function solution(numbers) {
         return '0'
     }
     const res = mergeSort(numbers.map((v)=>v.toString()))
-    console.log(res)
     return res.join().replaceAll(',','')
+
+    // ! 컴팩트 답    
+    // const result = numbers.map((v)=>v.toString())
+    // .sort((a,b)=>Number(b+a) - Number(a+b))
+    // .join('');
+    // return result[0] === '0' ? '0' : result
 }
 
 // console.log(solution([6, 10, 2, 0])); // "62100"
