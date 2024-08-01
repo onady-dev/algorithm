@@ -44,44 +44,65 @@ itemX, itemY는 1 이상 50 이하인 자연수입니다.
  */
 
 function solution(rectangle, characterX, characterY, itemX, itemY) {
-    const boardSize = getBoardSize(rectangle);
-    console.log(boardSize)
-    const board = Array.from(Array(boardSize.y),()=>new Array(boardSize.x).fill(0))
-    console.log(board)
-    drawBoard(board, rectangle)
-    console.log(board)
+  const boardSize = getBoardSize(rectangle);
+  console.log(boardSize);
+  const board = Array.from(Array(boardSize.y), () => new Array(boardSize.x).fill(0));
+  drawBoard(board, rectangle);
+  console.log(board);
 }
 
-function getBoardSize(rectangle){
-    const boardSize = {x: 0, y: 0}
-    let minX = 0
-    let minY = 0
-    for(let square of rectangle){
-        boardSize.x = Math.max(square[2], boardSize.x)
-        boardSize.y = Math.max(square[3], boardSize.y)
-        minX = minX === 0 ? square[0] : Math.min(square[2],minX)
-        minY = minY === 0 ? square[1] : Math.min(square[2],minY)
-    }
-    return {
-        x: boardSize.x + minX - 1,
-        y: boardSize.y + minY - 1
-    }
+function getBoardSize(rectangle) {
+  const boardSize = { x: 0, y: 0 };
+  let minX = 0;
+  let minY = 0;
+  for (let square of rectangle) {
+    boardSize.x = Math.max(square[2], boardSize.x);
+    boardSize.y = Math.max(square[3], boardSize.y);
+    // minX = minX === 0 ? square[0] : Math.min(square[2], minX);
+    // minY = minY === 0 ? square[1] : Math.min(square[2], minY);
+  }
+  return {
+    x: boardSize.x + 2,
+    y: boardSize.y + 2,
+  };
 }
 
-function drawBoard(board, rectangle){
-    for(let square of rectangle){
-        for(let i = 0; i < square[2]-square[0]; i++){
-            for(let j = 0; j < square[3]-square[1]; j++){
-                console.log(square[3]-square[1]+j-1, square[2]-square[0]+i-1)
-                board[square[3]-square[1]+j-1][square[2]-square[0]+i-1] = 1
-            }
-        }
+function drawBoard(board, rectangle) {
+  for (let square of rectangle) {
+    for (let i = 0; i <= square[2] - square[0]; i++) {
+      for (let j = 0; j <= square[3] - square[1]; j++) {
+        board[square[1] + j][square[0] + i] = 1;
+      }
     }
+  }
 }
 
+console.log(
+  solution(
+    [
+      [1, 1, 2, 2],
+      [1, 3, 2, 4],
+    ],
+    1,
+    3,
+    7,
+    8
+  )
+); // 17
+
+// console.log(solution([[1,1,7,4],[3,2,5,5],[4,3,6,9],[2,6,8,8]], 1, 3, 7, 8)); // 17
 // console.log(solution([[1,1,7,4],[3,2,5,5],[4,3,6,9],[2,6,8,8]], 1, 3, 7, 8)); // 17
 // console.log(solution([[1,1,8,4],[2,2,4,9],[3,6,9,8],[6,3,7,7]]), 9, 7, 6, 1); // 11
 // console.log(solution([[1,1,5,7]]), 1, 1, 4, 7) // 9
 // console.log(solution([[2,1,7,5],[6,4,10,10]]), 3, 1, 7, 10) // 15
-// console.log(solution([[2,2,5,5],[1,3,6,4],[3,1,4,6]]), 1, 4, 6, 3) //10
-console.log(solution([[2,2,4,4],[1,3,5,4],[3,1,4,5]]), 1, 4, 6, 3) //10
+// console.log(
+//   solution([
+//     [2, 2, 5, 5],
+//     [1, 3, 6, 4],
+//     [3, 1, 4, 6],
+//   ]),
+//   1,
+//   4,
+//   6,
+//   3
+// );
